@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sælan — Sólin er nær en þú heldur</title>
+<meta name="description" content="Sólbaðsstofan Sælan, Faxafeni 10. Upplifðu KBL K11 Air Loft ALL LED.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#060608">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23060608'/%3E%3Ccircle cx='8' cy='8' r='4' fill='%23E8B866'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060608; --ink:#F7F4EE; --mute:#B4AFA6; --gold:#E8B866; --blue:#3D6BFF; --red:#E91722;
+  --line:rgba(247,244,238,.16);
+  --pad:clamp(1.25rem,4.5vw,4.5rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);color-scheme:dark;scroll-behavior:smooth;scrollbar-color:#2a2620 var(--bg);scrollbar-width:thin}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Lato",system-ui,sans-serif;font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--bg)}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#2a2620;border:2px solid var(--bg);border-radius:6px}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+h1,h2,h3,p,dl,dd,ul{margin:0}ul{padding:0;list-style:none}
+.display{font-family:"Josefin Sans",sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:.06em;line-height:1.04;text-wrap:balance}
+.display b{font-weight:600}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0;opacity:0;transition:opacity 1.4s var(--ease)}
+html.ready #gl{opacity:1}
+html.still #gl{opacity:.5}
+.backdrop{position:fixed;inset:0;z-index:0;background:radial-gradient(90% 60% at 60% 20%,rgba(232,184,102,.14),transparent 60%),linear-gradient(180deg,#060608,#0c0b10)}
+html.ready .backdrop{display:none}
+
+.top{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.1rem var(--pad);padding-top:max(1.1rem,env(safe-area-inset-top))}
+.top{transition:background-color .35s}
+html.past .top,html:not(.live) .top{background:rgba(6,6,8,.9)}
+.mark{font-family:"Josefin Sans",sans-serif;font-weight:600;letter-spacing:.32em;text-transform:uppercase;text-decoration:none;font-size:1rem;display:inline-flex;align-items:center;gap:.7rem}
+.mark i{width:.5rem;height:.5rem;border-radius:50%;background:var(--red);display:block;margin-top:-.2em}
+.top nav{display:flex;align-items:center;gap:clamp(1rem,2.4vw,2.25rem);font-size:.9375rem}
+.top nav a.link{text-decoration:none;color:var(--mute);transition:color .2s}
+.top nav a.link:hover{color:var(--ink)}
+@media (max-width:720px){.top nav a.link{display:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:3.25rem;padding:0 1.6rem;border-radius:1px;font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:.9375rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .18s var(--ease),background-color .25s,border-color .25s,color .25s;white-space:nowrap;padding-top:.2em}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--gold)}
+.btn.ghost{border-color:rgba(247,244,238,.34);color:var(--ink);background:rgba(6,6,8,.3)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.small{min-height:2.5rem;padding:.2em 1.1rem 0;font-size:.8125rem}
+
+main{position:relative;z-index:3}
+.scene{position:relative;min-height:100svh;display:grid;padding:7rem var(--pad) 4rem}
+html.live .stage{height:1000vh}
+html.live .scene{position:fixed;inset:0;min-height:0;opacity:0;visibility:hidden;pointer-events:none;will-change:opacity,transform}
+html.live .scene.on{visibility:visible}
+html.live .scene.hit{pointer-events:auto}
+.scene .sub{color:var(--mute);font-size:clamp(1.0625rem,1.4vw,1.3rem);max-width:40ch}
+
+.s-hero{align-content:end;justify-items:start;padding-bottom:clamp(2.5rem,7vh,5rem)}
+.s-hero::before,.s-k11::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(6,6,8,.85));pointer-events:none}
+.s-hero>*,.s-k11>*{position:relative}
+.s-hero h1{font-size:clamp(2rem,5.6vw,5.5rem)}
+.s-hero h1 span{display:block}
+.s-hero .sub{margin-top:1.4rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.hint{position:absolute;right:var(--pad);bottom:clamp(2.5rem,7vh,5rem);display:flex;align-items:center;gap:.9rem;font-size:.8125rem;color:var(--mute);letter-spacing:.08em}
+.hint i{display:block;width:1px;height:56px;background:var(--line);position:relative;overflow:hidden}
+.hint i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--gold);animation:drop 2.2s var(--ease) infinite}
+@keyframes drop{to{top:110%}}
+@media (max-width:720px){.hint{display:none}}
+
+.s-mid{align-content:center;justify-items:center;text-align:center}
+.s-mid h2{font-size:clamp(1.8rem,5vw,4.75rem);text-shadow:0 2px 40px rgba(6,6,8,.8)}
+.s-world{align-content:end;justify-items:start;padding-bottom:clamp(3rem,10vh,7rem)}
+.s-world h2{font-size:clamp(2.6rem,9vw,9rem);font-weight:600;letter-spacing:.1em;line-height:.95;text-shadow:0 4px 60px rgba(6,6,8,.45)}
+.s-world .when{font-family:"Josefin Sans",sans-serif;font-weight:300;text-transform:uppercase;letter-spacing:.42em;font-size:clamp(1rem,2vw,1.6rem);margin-top:.6rem;text-shadow:0 2px 24px rgba(6,6,8,.6)}
+.s-world .fine{margin-top:1.4rem;font-size:.875rem;max-width:44ch;color:rgba(247,244,238,.86);text-shadow:0 1px 14px rgba(6,6,8,.7)}
+
+.s-k11{align-content:end;justify-items:start;padding-bottom:clamp(2.5rem,7vh,5rem)}
+.s-k11 h2{font-size:clamp(1.7rem,3.6vw,3.4rem)}
+.s-k11 h2 span{display:block}
+.s-k11 .detail{margin-top:1.2rem;min-height:4.8em;max-width:38ch}
+.s-k11 .detail strong{display:block;font-family:"Josefin Sans",sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-size:.9375rem}
+.s-k11 .detail span{color:var(--mute)}
+#hots{position:fixed;inset:0;z-index:4;pointer-events:none;display:none}
+html.live #hots{display:block}
+.hot{position:absolute;left:0;top:0;display:flex;align-items:center;gap:.6rem;background:none;border:0;color:var(--ink);font:inherit;font-family:"Josefin Sans",sans-serif;font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:.55rem .6rem .55rem 0;margin:-1.1rem 0 0 -.6rem;opacity:0;visibility:hidden;transition:opacity .4s}
+.hot.vis{opacity:1;visibility:visible;pointer-events:auto}
+.hot i{width:1.2rem;height:1.2rem;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;flex:none;transition:border-color .25s,transform .3s var(--ease)}
+.hot i::after{content:"";width:.34rem;height:.34rem;border-radius:50%;background:var(--ink);transition:background-color .25s}
+.hot em{font-style:normal;padding-top:.25em;text-shadow:0 1px 12px #060608,0 0 3px #060608}
+.hot::before{content:"";order:1;width:1.4rem;height:1px;background:rgba(247,244,238,.5)}
+.hot i{order:0}.hot em{order:2}
+.hot:hover i,.hot.active i{border-color:var(--gold);transform:scale(1.2)}
+.hot:hover i::after,.hot.active i::after{background:var(--gold)}
+.hot.active em{color:var(--gold)}
+@media (max-width:820px){.hot em,.hot::before{display:none}.hot.active em{display:block}}
+
+.block{position:relative;padding:clamp(5rem,12vh,9rem) var(--pad);background:var(--bg)}
+.block+.block{border-top:1px solid var(--line)}
+.block h2{font-size:clamp(1.9rem,4.4vw,4rem)}
+.block .lead{margin-top:1.4rem;color:var(--mute);max-width:62ch}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:clamp(2rem,4vw,4rem);margin-top:clamp(2.5rem,6vh,4.5rem)}
+.cols h3{font-family:"Josefin Sans",sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.9375rem;color:var(--gold);padding-bottom:.9rem;border-bottom:1px solid var(--line)}
+.cols p{margin-top:1rem;color:var(--mute);font-size:1rem}
+.cols li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+.cols li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cols li small{display:block;color:var(--mute);font-size:.875rem}
+.book{min-height:100svh;display:grid;align-content:center;background:radial-gradient(70% 55% at 80% 0%,rgba(232,184,102,.13),transparent 65%),var(--bg)}
+.book h2{font-size:clamp(2.1rem,6vw,5.5rem)}
+.sessions{margin-top:clamp(2.5rem,6vh,4rem);border-top:1px solid var(--line);max-width:56rem}
+.sessions li{display:grid;grid-template-columns:minmax(5.5rem,9rem) 1fr auto;align-items:baseline;gap:1rem 2rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.sessions .min{font-family:"Josefin Sans",sans-serif;font-weight:300;font-size:clamp(2rem,4.5vw,3.5rem);line-height:1;font-variant-numeric:tabular-nums}
+.sessions .min small{font-size:.9375rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-left:.4rem}
+.sessions .what{color:var(--mute)}
+.sessions .kr{font-family:"Josefin Sans",sans-serif;font-size:clamp(1.2rem,2vw,1.6rem);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:560px){.sessions li{grid-template-columns:1fr auto}.sessions .what{grid-column:1/-1;order:3}}
+.book .note{margin-top:1.4rem;color:var(--mute);font-size:.9375rem;max-width:60ch}
+
+footer{position:relative;z-index:3;background:var(--bg);border-top:1px solid var(--line);padding:2.5rem var(--pad) max(2.5rem,env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:1.25rem 2.5rem;justify-content:space-between;align-items:baseline;font-size:.9375rem;color:var(--mute)}
+footer nav{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem}
+footer a{text-decoration:none}footer a:hover{color:var(--ink);text-decoration:underline}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hint i::after{animation:none}.btn,.hot,.hot i{transition:none}}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="hots" aria-label="Eiginleikar K11 Air Loft"></div>
+
+<header class="top">
+  <a class="mark" href="#" aria-label="Sælan, forsíða">Sælan<i></i></a>
+  <nav aria-label="Aðalvalmynd">
+    <a class="link" href="#k11">K11 Air Loft</a>
+    <a class="link" href="#stofan">Stofan</a>
+    <a class="link" href="#verd">Verð</a>
+    <a class="btn primary small" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka tíma</a>
+  </nav>
+</header>
+
+<main>
+  <div class="stage">
+    <section class="scene s-hero" data-scene="hero">
+      <h1 class="display"><span><b>Sælan.</b></span><span>Sólin er nær en þú heldur.</span></h1>
+      <p class="sub">Upplifðu nýja vídd ljóss og þæginda.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka tíma</a>
+        <a class="btn ghost" href="#k11">Upplifðu K11</a>
+      </div>
+      <div class="hint" aria-hidden="true">Skrunaðu niður<i></i></div>
+    </section>
+
+    <section class="scene s-mid" data-scene="mirror">
+      <h2 class="display">Inn í <b>nýja vídd.</b></h2>
+    </section>
+
+    <section class="scene s-world" data-scene="capri">
+      <h2 class="display">Capri.</h2>
+      <p class="when">Morgunbirtan</p>
+      <p class="fine">Áfangastaðirnir eru myndræn túlkun, innblásin af stillingum K11 Air Loft.</p>
+    </section>
+    <section class="scene s-world" data-scene="hawaii">
+      <h2 class="display">Hawaii.</h2>
+      <p class="when">Birtan</p>
+    </section>
+    <section class="scene s-world" data-scene="hamptons">
+      <h2 class="display">Hamptons.</h2>
+      <p class="when">Sólsetrið</p>
+    </section>
+
+    <section class="scene s-k11" data-scene="k11" id="k11">
+      <h2 class="display"><span><b>K11 Air Loft.</b></span><span>Hönnun á nýju stigi.</span></h2>
+      <p class="detail" id="detail" aria-live="polite"><strong>KBL megaSun K11 Air Loft ALL LED</strong><span>Veldu punkt á bekknum til að skoða nánar.</span></p>
+      <div class="cta"><a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka K11 Air Loft</a></div>
+    </section>
+  </div>
+
+  <section class="block" id="stofan">
+    <h2 class="display">Það er alltaf <b>sól og sæla</b> hjá okkur.</h2>
+    <p class="lead">Sólbaðsstofan Sælan hefur starfað í yfir 20 ár. Fyrsta stofan opnaði í Bæjarlind 1 árið 2002, önnur í Egilshöll árið 2015, og 1. október 2025 opnuðum við aftur. Í dag erum við í Faxafeni 10 í Skeifunni.</p>
+    <div class="cols">
+      <div>
+        <h3>Bekkirnir</h3>
+        <p><strong>KBL K11 Air Loft ALL LED.</strong> Með SunControl, SunFinity LED brúnkutækni fyrir líkama og andlit, Loft Infinity speglum og kælingu fyrir andlit og líkama.</p>
+        <p><strong>Ergoline Prestige 1400.</strong> Stillir styrk ljóssins eftir líkamsstöðu, með LED ljósasýningu í yfir 200 litum og Comfort Cooling Plus kælingu.</p>
+      </div>
+      <div>
+        <h3>Áskrift í ljós</h3>
+        <ul>
+          <li><span>Einn ljósatími á dag<small>3 mánaða uppsagnarfrestur</small></span><span>7.990 kr. á mán.</span></li>
+          <li><span>Einn ljósatími á dag<small>1 mánaðar uppsagnarfrestur</small></span><span>8.990 kr. á mán.</span></li>
+          <li><span>Einn spraytan tími á viku<small>1 mánaðar uppsagnarfrestur</small></span><span>9.990 kr. á mán.</span></li>
+        </ul>
+        <p>Hreint handklæði fylgir alltaf.</p>
+      </div>
+      <div>
+        <h3>Vörur</h3>
+        <p>Sælan er söluaðili Australian Gold og 7Suns Cosmetics sólarvara, bæði fyrir ljósabekki og útiveru.</p>
+        <p><a href="https://saelan.is/shop" rel="noopener">Skoða vefverslun</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block book" id="verd">
+    <h2 class="display">Þín stund. <b>Þitt val.</b></h2>
+    <ul class="sessions">
+      <li><span class="min">8<small>mín</small></span><span class="what">Hálfur tími, K11 Air Loft FULL LED</span><span class="kr">2.690 kr.</span></li>
+      <li><span class="min">12<small>mín</small></span><span class="what">Stakur tími, K11 Air Loft FULL LED</span><span class="kr">2.990 kr.</span></li>
+      <li><span class="min">16<small>mín</small></span><span class="what">Einn og hálfur tími, K11 Air Loft FULL LED</span><span class="kr">3.890 kr.</span></li>
+    </ul>
+    <p class="note">10% afsláttur fyrir öryrkja. Verð á öðrum bekkjum, morgunverð og kort eru á <a href="https://saelan.is/" rel="noopener">saelan.is</a>.</p>
+    <div class="cta"><a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka tíma</a></div>
+  </section>
+</main>
+
+<footer>
+  <span>Sólbaðsstofan Sælan · Faxafeni 10, Skeifunni</span>
+  <nav aria-label="Tenglar">
+    <a href="https://www.instagram.com/saelan1" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61580652401262" rel="noopener">Facebook</a>
+    <a href="https://saelan.is/shop" rel="noopener">Vefverslun</a>
+  </nav>
+  <span>Hönnunartillaga. Ekki opinber vefur Sælunnar.</span>
+</footer>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const root=document.documentElement, canvas=document.getElementById('gl');
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const LITE=matchMedia('(max-width: 820px), (pointer: coarse)').matches;
+let renderer; try{ renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:'high-performance'}); }catch(e){ renderer=null; }
+if(renderer) start();
+
+function start(){
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const smooth=(a,b,x)=>{ const t=clamp((x-a)/(b-a)); return t*t*(3-2*t); };
+const win=(p,a,b,c,d)=>smooth(a,b,p)*(1-smooth(c,d,p));
+const lerp=(a,b,t)=>a+(b-a)*t;
+function kf(p,keys){ if(p<=keys[0][0]) return keys[0][1];
+  for(let i=0;i<keys.length-1;i++){ const [p0,v0]=keys[i],[p1,v1]=keys[i+1];
+    if(p<=p1){ const t=smooth(p0,p1,p); return Array.isArray(v0)?v0.map((v,j)=>lerp(v,v1[j],t)):lerp(v0,v1,t); } }
+  return keys[keys.length-1][1]; }
+
+let WEAK=false; try{ const gl=renderer.getContext(), ex=gl.getExtension('WEBGL_debug_renderer_info'); WEAK=/Intel|Mali|Adreno|PowerVR|SwiftShader|llvmpipe/i.test(ex?gl.getParameter(ex.UNMASKED_RENDERER_WEBGL):''); }catch(e){}
+const DPR=Math.min(devicePixelRatio||1, LITE?1.5:WEAK?1.1:1.75);
+renderer.setPixelRatio(DPR);
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1;
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x060608); scene.fog=new THREE.FogExp2(0x060608,.04);
+const camera=new THREE.PerspectiveCamera(32,1,.05,120);
+
+{ // studio environment
+  const env=new THREE.Scene(); env.background=new THREE.Color(0x020203);
+  const box=(w,h,d,x,y,z,r,g,b)=>{ const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshBasicMaterial({color:new THREE.Color(r,g,b),side:THREE.DoubleSide})); m.position.set(x,y,z); env.add(m); };
+  box(10,.2,5, 0,10,2, 2.2,2.0,1.7);
+  box(.2,12,4, -10,3,4, 3.4,3.4,3.7);
+  box(.2,10,1.6, 10,2,-3, 2.6,1.9,1.0);
+  box(14,.4,.2, 0,-1,-10, .2,.4,1.4);
+  const pm=new THREE.PMREMGenerator(renderer); scene.environment=pm.fromScene(env,.03).texture; pm.dispose();
+}
+const spot=new THREE.SpotLight(0xffd9a0,0,30,.42,.7,1.2); spot.position.set(1.5,10,2.5); spot.target.position.set(0,1,0); scene.add(spot,spot.target);
+const keyL=new THREE.DirectionalLight(0xffffff,0); keyL.position.set(-5,6,7); scene.add(keyL);
+const blueL=new THREE.PointLight(0x3d6bff,0,7,1.6); blueL.position.set(0,1.7,.6); scene.add(blueL);
+
+/* ---------- materials ---------- */
+const M={
+  alu:new THREE.MeshPhysicalMaterial({color:0xe2e5ea,metalness:1,roughness:.36,anisotropy:.3}),
+  black:new THREE.MeshPhysicalMaterial({color:0x08090c,metalness:.6,roughness:.22,clearcoat:1,clearcoatRoughness:.12}),
+  gun:new THREE.MeshPhysicalMaterial({color:0x1c1f26,metalness:1,roughness:.3}),
+  glass:new THREE.MeshPhysicalMaterial({color:0x9fb6ff,metalness:0,roughness:.05,transparent:true,opacity:.2,depthWrite:false,clearcoat:1}),
+  floor:new THREE.MeshStandardMaterial({color:0x050507,metalness:.7,roughness:.22,transparent:true,opacity:.8}),
+  fin:new THREE.MeshStandardMaterial({color:0x0b0b0f,metalness:.4,roughness:.5}),
+};
+const U={ uOn:{value:0}, uTime:{value:0}, uPar:{value:new THREE.Vector2()} };
+const ledMat=()=>new THREE.ShaderMaterial({uniforms:{uOn:U.uOn,uTime:U.uTime},
+  vertexShader:`varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+  fragmentShader:`uniform float uOn,uTime; varying vec2 vUv;
+    void main(){ vec2 g=vUv*vec2(84.,12.); vec2 f=fract(g)-.5; float dot_=smoothstep(.42,.18,length(f));
+      float cell=vUv.x*7.; vec2 c=vec2(fract(cell)-.5,(vUv.y-.5)*1.0); float r=length(c*vec2(1.,1.));
+      float ring=.35+.65*smoothstep(.06,.0,abs(fract(r*4.-uTime*.05)-.5)-.2);
+      float red=step(.86,fract(r*4.+.25));
+      vec3 col=mix(vec3(.04,.14,1.),vec3(1.,.08,.25),red)*dot_*ring*2.2;
+      float edge=smoothstep(.07,.0,min(vUv.y,1.-vUv.y)); col+=vec3(1.,.1,.35)*edge*1.6;
+      float sweep=smoothstep(0.,.25,uOn*1.25-vUv.x);
+      gl_FragColor=vec4(col*sweep+vec3(.004,.006,.02),1.); }`});
+const infMat=()=>new THREE.ShaderMaterial({uniforms:{uOn:U.uOn,uTime:U.uTime,uPar:U.uPar},
+  vertexShader:`varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+  fragmentShader:`uniform float uOn,uTime; uniform vec2 uPar; varying vec2 vUv;
+    void main(){ vec3 col=vec3(.002,.004,.016); vec2 q=(vUv-.5)*vec2(1.72,1.);
+      for(int i=0;i<12;i++){ float n=float(i); float s=1.+n*.2; vec2 p=(q-uPar*n*.035)*s;
+        vec2 d=abs(p)-vec2(.82,.46); float sd=length(max(d,0.))+min(max(d.x,d.y),0.);
+        float line=smoothstep(.02*s,.0,abs(sd));
+        float t=(d.x>d.y)?p.y:p.x; float dots=.45+.55*step(.5,fract(t*26.));
+        col+=vec3(.14,.3,1.)*line*dots*pow(.74,n)*2.4; }
+      gl_FragColor=vec4(col*uOn,1.); }`});
+
+/* ---------- K11 Air Loft ---------- */
+function rrect(w,h,r){ const s=new THREE.Shape(), x=-w/2,y=-h/2;
+  s.moveTo(x+r,y); s.lineTo(x+w-r,y); s.quadraticCurveTo(x+w,y,x+w,y+r); s.lineTo(x+w,y+h-r); s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  s.lineTo(x+r,y+h); s.quadraticCurveTo(x,y+h,x,y+h-r); s.lineTo(x,y+r); s.quadraticCurveTo(x,y,x+r,y); return s; }
+function tube(len,ry,rz,mat){ const g=new THREE.CylinderGeometry(1,1,len,LITE?28:48,1); g.rotateZ(Math.PI/2); g.scale(1,ry,rz); return new THREE.Mesh(g,mat); }
+function screenTex(){ const c=document.createElement('canvas'); c.width=256; c.height=192; const x=c.getContext('2d');
+  const g=x.createLinearGradient(0,0,0,192); g.addColorStop(0,'#1b2f6b'); g.addColorStop(.6,'#e79a55'); g.addColorStop(1,'#f6d79a'); x.fillStyle=g; x.fillRect(0,0,256,192);
+  x.fillStyle='#fff3d0'; x.beginPath(); x.arc(128,118,26,0,7); x.fill(); x.fillStyle='rgba(6,6,8,.55)'; x.fillRect(0,150,256,42);
+  x.fillStyle='#fff'; x.font='600 22px sans-serif'; x.textAlign='center'; x.fillText('CAPRI',128,178); const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; return t; }
+const scrMat=new THREE.MeshBasicMaterial({map:screenTex()});
+function buildK11(){
+  const g=new THREE.Group(), add=m=>{ g.add(m); return m; };
+  // LOFT: two aluminium loops
+  const loop=rrect(1.56,2.26,.15); loop.holes.push(rrect(1.34,2.04,.07));
+  const lg=new THREE.ExtrudeGeometry(loop,{depth:.2,bevelEnabled:true,bevelSize:.014,bevelThickness:.014,bevelSegments:2,curveSegments:10}); lg.translate(0,0,-.1); lg.rotateY(Math.PI/2);
+  for(const sx of [-1,1]){ const m=add(new THREE.Mesh(lg,M.alu)); m.position.set(sx*1.22,1.13,0); }
+  // overhead infinity mirror + base
+  const top=add(new THREE.Mesh(new THREE.BoxGeometry(2.26,.1,1.34),M.black)); top.position.set(0,2.1,0);
+  const inf=add(new THREE.Mesh(new THREE.PlaneGeometry(2.2,1.28),infMat())); inf.rotation.x=Math.PI/2; inf.position.set(0,2.048,0);
+  const base=add(new THREE.Mesh(new THREE.BoxGeometry(2.26,.1,1.34),M.black)); base.position.set(0,.16,0);
+  const inf2=add(new THREE.Mesh(new THREE.PlaneGeometry(2.2,1.28),infMat())); inf2.rotation.x=-Math.PI/2; inf2.position.set(0,.212,0);
+  for(const sx of [-1,1]){ const p=add(new THREE.Mesh(new THREE.BoxGeometry(.09,1.9,.09),M.black)); p.position.set(sx*.96,1.13,-.56); }
+  // canopy tubes with LED fields
+  const led=(w,h,x,y,z,rx)=>{ const m=add(new THREE.Mesh(new THREE.PlaneGeometry(w,h),ledMat())); m.position.set(x,y,z); m.rotation.x=rx; return m; };
+  const t1=add(tube(2.2,.15,.27,M.black)); t1.position.set(0,1.56,.02);
+  led(1.96,.36,0,1.46,.215,.5);
+  const t2=add(tube(2.2,.15,.27,M.black)); t2.position.set(0,1.15,.1);
+  led(1.96,.36,0,1.05,.295,.5);
+  for(const [y,z] of [[1.56,.02],[1.15,.1]]) for(const sx of [-1,1]){ const cap=add(tube(.03,.12,.22,M.gun)); cap.position.set(sx*1.1,y,z); }
+  const spine=add(new THREE.Mesh(new THREE.BoxGeometry(.5,.9,.1),M.black)); spine.position.set(0,1.3,-.2);
+  const hump=add(new THREE.Mesh(new THREE.SphereGeometry(1,32,16,0,Math.PI*2,0,Math.PI/2),M.black)); hump.scale.set(.5,.2,.3); hump.position.set(0,1.66,0);
+  const scr=add(new THREE.Mesh(new THREE.PlaneGeometry(.2,.15),scrMat)); scr.position.set(0,1.63,.292); scr.rotation.x=-.2;
+  const scrB=add(new THREE.Mesh(new THREE.BoxGeometry(.24,.19,.03),M.gun)); scrB.position.set(0,1.63,.272); scrB.rotation.x=-.2;
+  const tab=add(new THREE.Mesh(new THREE.BoxGeometry(.2,.15,.02),M.gun)); tab.position.set(1.0,1.2,.5); tab.rotation.set(-.4,-.5,0);
+  const tabS=add(new THREE.Mesh(new THREE.PlaneGeometry(.17,.12),scrMat)); tabS.position.set(.995,1.205,.512); tabS.rotation.set(-.4,-.5,0);
+  // bench
+  const t3=add(tube(2.2,.14,.36,M.black)); t3.position.set(0,.58,.05);
+  led(1.96,.56,0,.735,.05,-Math.PI/2);
+  const glass=add(new THREE.Mesh(new THREE.BoxGeometry(2.2,.03,.86),M.glass)); glass.position.set(0,.79,.05);
+  const rail=add(tube(2.24,.022,.022,M.alu)); rail.position.set(0,.79,.49);
+  const foot=add(new THREE.Mesh(new THREE.BoxGeometry(1.9,.24,.6),M.black)); foot.position.set(0,.34,.05);
+  return g;
+}
+const rig=new THREE.Group(); scene.add(rig);
+const k11=buildK11(); rig.add(k11);
+const mirrorRig=new THREE.Group(); scene.add(mirrorRig);
+const k11b=buildK11(); k11b.scale.y=-1; mirrorRig.add(k11b);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(90,90),M.floor); floor.rotation.x=-Math.PI/2; scene.add(floor);
+for(let i=0;i<11;i++){ const a=(i-5)/5*1.25, f=new THREE.Mesh(new THREE.BoxGeometry(.7,18,.7),M.fin); f.position.set(Math.sin(a)*14,9,-Math.cos(a)*14+1); f.rotation.y=-a; scene.add(f); }
+// golden beam + pool
+const beamU={uA:{value:0}};
+const beam=new THREE.Mesh(new THREE.CylinderGeometry(.12,2.7,11,48,1,true),new THREE.ShaderMaterial({uniforms:beamU,transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,
+  vertexShader:`varying vec2 vUv; varying vec3 vN,vV; void main(){ vUv=uv; vec4 mv=modelViewMatrix*vec4(position,1.); vN=normalize(normalMatrix*normal); vV=normalize(-mv.xyz); gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`uniform float uA; varying vec2 vUv; varying vec3 vN,vV; void main(){ float e=pow(abs(dot(normalize(vN),normalize(vV))),2.2); float h=smoothstep(0.,.5,vUv.y)*.8+.2; gl_FragColor=vec4(vec3(1.,.74,.38)*e*h*uA*.1,1.); }`}));
+beam.position.set(0,5.5,0); scene.add(beam);
+const pool=new THREE.Mesh(new THREE.CircleGeometry(3.4,48),new THREE.ShaderMaterial({uniforms:beamU,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+  vertexShader:`varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+  fragmentShader:`uniform float uA; varying vec2 vUv; void main(){ float d=length(vUv-.5)*2.; gl_FragColor=vec4(vec3(1.,.72,.36)*pow(max(0.,1.-d),2.)*uA*.22,1.); }`}));
+pool.rotation.x=-Math.PI/2; pool.position.y=.004; scene.add(pool);
+
+/* ---------- full-screen light worlds ---------- */
+const F={ uRes:{value:new THREE.Vector2(1,1)}, uTime:{value:0}, uA:{value:0}, uTun:{value:0}, uTravel:{value:0}, uWarm:{value:0}, uGlow:{value:0},
+  uWorld:{value:0}, uOpen:{value:0}, uPitch:{value:0}, uAlt:{value:6}, uFly:{value:0}, uRibbon:{value:0}, uDis:{value:0}, uMirror:{value:0},
+  uZen:{value:new THREE.Vector3()}, uHor:{value:new THREE.Vector3()}, uSunC:{value:new THREE.Vector3()}, uSunD:{value:new THREE.Vector3(0,.1,-1)}, uWat:{value:new THREE.Vector3()},
+  uHaze:{value:10}, uCloud:{value:.3}, uCliff:{value:0}, uCliffC:{value:new THREE.Vector3()} };
+const fx=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms:F,transparent:true,depthTest:false,depthWrite:false,
+  vertexShader:`varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.,1.); }`,
+  fragmentShader:`precision highp float;
+  uniform vec2 uRes; uniform float uTime,uA,uTun,uTravel,uWarm,uGlow,uWorld,uOpen,uPitch,uAlt,uFly,uRibbon,uDis,uMirror,uHaze,uCloud,uCliff;
+  uniform vec3 uZen,uHor,uSunC,uSunD,uWat,uCliffC; varying vec2 vUv;
+  float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
+  float noise(vec2 p){ vec2 i=floor(p),f=fract(p); f=f*f*(3.-2.*f); return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y); }
+  float fbm(vec2 p){ float a=.5,s=0.; for(int i=0;i<4;i++){ s+=a*noise(p); p=p*2.03+7.1; a*=.5; } return s; }
+  vec3 sky(vec3 rd,float clouds){
+    float t=clamp(rd.y,0.,1.); vec3 col=mix(uHor,uZen,pow(t,.5));
+    float sd=max(dot(rd,uSunD),0.);
+    col+=uSunC*(pow(sd,1200.)*9.+pow(sd,70.)*.4+pow(sd,8.)*.1);
+    if(clouds>0.){ vec2 uv=rd.xz/(rd.y+.18)*.55+vec2(uTime*.006,uFly*.02); float c=smoothstep(.5,.85,fbm(uv))*uCloud*smoothstep(.0,.18,rd.y);
+      col=mix(col,mix(uHor*1.08,uSunC*.8+.2,pow(sd,2.5))*(.75+.25*fbm(uv*3.)),c*.85); }
+    col=mix(col,uHor*1.04,exp(-abs(rd.y)*uHaze)*.5);
+    if(uCliff>0.01&&clouds>0.){ float az=atan(rd.x,-rd.z); float m=smoothstep(.16,.5,abs(az-uSunD.x*.9));
+      float H=uCliff*m*(max(0.,fbm(vec2(az*2.6+3.,1.))-.3)*.62+max(0.,noise(vec2(az*9.,4.))-.55)*.12);
+      if(rd.y<H){ float tex=fbm(vec2(az*40.,rd.y*60.)); vec3 rock=uCliffC*(.55+.5*tex)*(.5+.9*smoothstep(H,0.,rd.y)*0.+.5); rock=mix(rock,uSunC*.5,.25*smoothstep(.0,H,rd.y)); col=mix(rock,uHor,.3); } }
+    return col; }
+  vec3 world(vec2 q){
+    q.x*=mix(1.,.03,uRibbon);
+    vec3 rd=normalize(vec3(q.x,q.y,-1.25)); float cp=cos(uPitch),sp=sin(uPitch); rd=vec3(rd.x,rd.y*cp-rd.z*sp*-1.,rd.z*cp+rd.y*sp*-1.); rd=normalize(vec3(rd.x,rd.y,rd.z));
+    vec3 col;
+    if(rd.y>0.) col=sky(rd,1.);
+    else { float t=uAlt/max(-rd.y,.0015); vec2 pos=rd.xz*t+vec2(0.,-uFly);
+      float s=.3/(1.+t*.03)*(1.-uMirror);
+      float nx=sin(pos.x*1.1+uTime*.9)*.45+sin(pos.x*.37-pos.y*.61+uTime*.6)*.55+(fbm(pos*1.6+uTime*.2)-.5)*1.3;
+      float nz=sin(pos.y*.9-uTime*.7)*.45+sin(pos.y*.43+pos.x*.52+uTime*.5)*.55+(fbm(pos*1.6+9.-uTime*.2)-.5)*1.3;
+      vec3 n=normalize(vec3(nx*s,1.,nz*s)); vec3 rf=reflect(rd,n); rf.y=abs(rf.y)+.002;
+      vec3 sk=sky(normalize(rf),0.); float fr=pow(1.-max(-rd.y,0.),3.5);
+      col=mix(uWat*(.85+.3*fbm(pos*.13)),sk,mix(.22+.78*fr,1.,uMirror));
+      col=mix(col,uHor,(1.-exp(-t*.003))*.6); }
+    col*=1.-.4*uRibbon; col+=uSunC*pow(noise(vec2(q.y*13.+3.,uTime*.3+q.x*.2)),3.)*uRibbon*.7;
+    return col*.9; }
+  vec3 tunnel(vec2 q){
+    vec3 col=vec3(0.); vec2 hf=vec2(uRes.x/uRes.y,1.)*.94; vec3 tint=mix(vec3(.14,.3,1.),vec3(1.,.66,.3),uWarm);
+    for(int i=0;i<16;i++){ float z=fract(float(i)/16.-uTravel); float depth=mix(.86,15.,z*z); vec2 p=q*depth;
+      vec2 d=abs(p)-hf; float sd=length(max(d,0.))+min(max(d.x,d.y),0.);
+      float line=smoothstep(.012*depth+.004,.0,abs(sd)); float t=(d.x>d.y)?p.y:p.x; float dots=.45+.55*step(.5,fract(t*14.));
+      col+=tint*line*dots*pow(1.-z,1.6)*smoothstep(0.,.07,z)*2.6; }
+    col+=mix(vec3(.3,.5,1.),vec3(1.,.8,.5),max(uWarm,uGlow))*exp(-length(q)*mix(9.,1.6,uGlow))*(.25+uGlow*2.2);
+    return col; }
+  void main(){
+    vec2 q=(vUv-.5)*2.; q.x*=uRes.x/uRes.y;
+    vec3 col=vec3(0.);
+    if(uTun>0.001) col=tunnel(q)*uTun;
+    if(uWorld>0.001){ float m=smoothstep(uOpen*2.6,uOpen*2.6-.5,length(q))*uWorld; vec3 w=world(q);
+      if(uDis>0.001){ vec2 g=floor(q*46.), f=fract(q*46.)-.5; float n=hash(g); f-=(vec2(hash(g+3.1),hash(g+7.7))-.5)*.62; float keep=1.-smoothstep(n-.15,n,uDis*1.15); float dotm=mix(1.,smoothstep(.3*(.5+hash(g+1.3)),.04,length(f))*2.,smoothstep(0.,.3,uDis)); w=w*keep*dotm; }
+      col=mix(col,w,m); }
+    gl_FragColor=vec4(col,uA); }`}));
+fx.frustumCulled=false; fx.renderOrder=999; fx.visible=false; scene.add(fx);
+const W=[ // Capri sunrise, Hawaii noon, Hamptons sunset
+  {zen:[.07,.14,.36],hor:[1.,.52,.2],sun:[2.,1.15,.5],el:.085,az:.22,wat:[.03,.1,.18],haze:9,cloud:.28,cliff:.95,cc:[.5,.4,.3],pitch:.07,alt:6},
+  {zen:[.0,.16,.62],hor:[.3,.68,.92],sun:[1.6,1.55,1.4],el:.62,az:-.1,wat:[.0,.34,.4],haze:5,cloud:.55,cliff:0,cc:[.2,.3,.2],pitch:.16,alt:10},
+  {zen:[.2,.14,.38],hor:[1.,.42,.3],sun:[1.7,.7,.3],el:.045,az:-.18,wat:[.12,.08,.16],haze:9,cloud:.6,cliff:.16,cc:[.07,.06,.08],pitch:.06,alt:4} ];
+const mix3=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
+function setWorld(w){ const i=Math.min(1,Math.floor(w)), t=clamp(w-i), A=W[i], B=W[i+1];
+  F.uZen.value.fromArray(mix3(A.zen,B.zen,t)); F.uHor.value.fromArray(mix3(A.hor,B.hor,t)); F.uSunC.value.fromArray(mix3(A.sun,B.sun,t)); F.uWat.value.fromArray(mix3(A.wat,B.wat,t)); F.uCliffC.value.fromArray(mix3(A.cc,B.cc,t));
+  const el=lerp(A.el,B.el,t), az=lerp(A.az,B.az,t); F.uSunD.value.set(Math.sin(az)*Math.cos(el),Math.sin(el),-Math.cos(az)*Math.cos(el));
+  F.uHaze.value=lerp(A.haze,B.haze,t); F.uCloud.value=lerp(A.cloud,B.cloud,t); F.uCliff.value=lerp(A.cliff,B.cliff,t);
+  return {pitch:lerp(A.pitch,B.pitch,t),alt:lerp(A.alt,B.alt,t)}; }
+
+/* ---------- post ---------- */
+const composer=new EffectComposer(renderer,new THREE.WebGLRenderTarget(innerWidth*DPR,innerHeight*DPR,{type:THREE.HalfFloatType,samples:LITE?0:WEAK?2:4}));
+composer.addPass(new RenderPass(scene,camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(256,256),.34,.6,1.1); composer.addPass(bloom); composer.addPass(new OutputPass());
+
+/* ---------- hotspots ---------- */
+const HOT=[
+  {t:'ALL LED',d:'Bekkurinn notar eingöngu LED ljós.',p:[-.55,1.06,.3]},
+  {t:'SunControl',d:'Þú sérsníður brúnkuna eftir þínum þörfum.',p:[0,1.63,.3]},
+  {t:'SunFinity',d:'LED brúnkutækni fyrir líkama og andlit.',p:[.72,1.47,.22]},
+  {t:'Loft Infinity speglar',d:'Hönnunin er eins og þú sért undir berum himni.',p:[-.2,2.05,.6],o:[0,-1.3,1.2]},
+  {t:'Kæling',d:'Þú stjórnar kælingu fyrir bæði andlit og líkama.',p:[-.75,1.7,0]},
+  {t:'Áfangastaðir',d:'Sólarupprás á Capri, hámarkssólskin frá Hawaii eða mjúkt sólsetur í Hamptons.',p:[1.0,1.2,.5]} ];
+const hots=document.getElementById('hots'), detail=document.getElementById('detail'); let focus=-1, focusF=0;
+const detail0=detail.innerHTML;
+function setFocus(i){ focus=(focus===i)?-1:i; HOT.forEach((h,j)=>{ h.el.classList.toggle('active',j===focus); h.el.setAttribute('aria-pressed',j===focus); });
+  if(focus<0) detail.innerHTML=detail0; else { detail.textContent=''; const s=document.createElement('strong'); s.textContent=HOT[focus].t; const sp=document.createElement('span'); sp.textContent=HOT[focus].d; detail.append(s,sp); } }
+HOT.forEach((h,i)=>{ const b=document.createElement('button'); b.className='hot'; b.type='button'; b.innerHTML='<i></i><em></em>'; b.querySelector('em').textContent=h.t; b.setAttribute('aria-pressed','false');
+  b.addEventListener('click',()=>setFocus(i)); hots.appendChild(b); h.el=b; h.v=new THREE.Vector3(...h.p); });
+
+/* ---------- layout + scroll ---------- */
+let Wd=1,Hh=1,aspect=1,kd=1,portrait=0;
+function resize(){ Wd=innerWidth; Hh=innerHeight; aspect=Wd/Hh; renderer.setSize(Wd,Hh,false); composer.setSize(Wd,Hh);
+  if(LITE) bloom.resolution.set(Wd*.5,Hh*.5); F.uRes.value.set(Wd,Hh);
+  camera.aspect=aspect; kd=clamp(1.35/aspect,1,2.1); portrait=smooth(1.2,.65,aspect); if(RM) requestAnimationFrame(still); }
+addEventListener('resize',resize);
+const stage=document.querySelector('.stage'); const S={}; document.querySelectorAll('.scene').forEach(el=>S[el.dataset.scene]=el);
+function setScene(el,o,dy){ if(el._o===o) return; el._o=o; el.style.opacity=o.toFixed(3); el.classList.toggle('on',o>.002); el.classList.toggle('hit',o>.6); el.style.transform=dy?`translate3d(0,${dy.toFixed(1)}px,0)`:''; }
+let p=0,pS=0,mx=0,my=0,mxS=0,myS=0,past=0;
+const FORCE=new URLSearchParams(location.search).get('p'); // ?p=0.4 pins the journey for review
+function readScroll(){ const total=stage.offsetHeight-innerHeight; if(FORCE!==null){ p=+FORCE; return; } p=clamp(scrollY/Math.max(1,total)); past=clamp((scrollY-total)/innerHeight); root.classList.toggle('past',past>.03); }
+addEventListener('scroll',readScroll,{passive:true});
+addEventListener('pointermove',e=>{ if(e.pointerType==='touch') return; mx=e.clientX/Wd*2-1; my=e.clientY/Hh*2-1; },{passive:true});
+document.querySelectorAll('a[href="#k11"]').forEach(a=>a.addEventListener('click',e=>{ if(!root.classList.contains('live')) return; e.preventDefault(); scrollTo({top:.93*(stage.offsetHeight-innerHeight),behavior:'smooth'}); }));
+
+const tmp=new THREE.Vector3(), tgt=new THREE.Vector3(), cpos=new THREE.Vector3(), up=new THREE.Vector3();
+function update(t,dt){
+  pS+=(p-pS)*(RM?1:1-Math.exp(-dt*5)); mxS+=(mx-mxS)*(1-Math.exp(-dt*3)); myS+=(my-myS)*(1-Math.exp(-dt*3));
+  const P=pS, T=RM?0:t;
+  U.uTime.value=T; F.uTime.value=T;
+
+  /* which layers */
+  const inA=smooth(.205,.235,P), outB=1-smooth(.80,.84,P);       // into the mirror / back out
+  const fxA=Math.min(inA,outB);
+  const machine=fxA<.999; rig.visible=mirrorRig.visible=floor.visible=beam.visible=pool.visible=machine; fx.visible=fxA>.001; F.uA.value=fxA;
+
+  if(machine){
+    const back=P>.5;
+    const on=back?1:smooth(.015,.09,P);
+    U.uOn.value=on; beamU.uA.value=(back?.75*smooth(.855,.9,P):smooth(0,.05,P)*(1-smooth(.08,.15,P)))*(1-fxA);
+    spot.intensity=(back?60:smooth(.01,.08,P)*60); blueL.intensity=on*2.4; keyL.intensity=on*1.5;
+    const rot=back ? -.5+Math.sin(T*.18)*.22*(1-focusF) : kf(P,[[0,-1.5],[.09,-.52],[.17,-.2],[.21,0]]);
+    rig.rotation.y=rot+mxS*.12*(1-fxA); mirrorRig.rotation.y=rig.rotation.y;
+    let cp,tg,upz=0;
+    if(!back){
+      cp=kf(P,[[0,[0,1.35,8.8*kd]],[.10,[.5,1.25,6.6*kd]],[.165,[.2,1.5,2.5]],[.2,[0,1.84,.95]],[.235,[0,1.93,.02]]]);
+      tg=kf(P,[[0,[-1.5*(1-portrait),.95-portrait*.5,0]],[.10,[0,1.15,0]],[.165,[0,1.85,0]],[.2,[0,2.04,.1]],[.235,[0,2.05,0]]]);
+      upz=smooth(.17,.215,P);
+    } else {
+      const wide=1-portrait;
+      cp=kf(P,[[.80,[0,1.93,.02]],[.845,[0,1.7,1.6]],[.9,[-.5,1.45,7.4*kd]]]);
+      tg=kf(P,[[.80,[0,2.05,0]],[.845,[0,1.8,0]],[.9,[-1.25*wide,1.0-portrait*.75,0]]]);
+      upz=1-smooth(.80,.84,P);
+      // hotspot focus
+      const want=(focus>=0&&P>.88)?1:0; focusF+=(want-focusF)*(1-Math.exp(-dt*3.2)); if(P<.86&&focus>=0) setFocus(focus);
+      if(focusF>.001&&focus>=0){ rig.updateMatrixWorld(); tmp.copy(HOT[focus].v).applyMatrix4(rig.matrixWorld);
+        const dir=cpos.set(cp[0],cp[1],cp[2]).sub(tmp).normalize(), o=HOT[focus].o||[0,0,0]; const fp=[tmp.x+dir.x*2.6*kd+.5*(1-portrait)+o[0],tmp.y+dir.y*2.6*kd+.12+o[1],tmp.z+dir.z*2.6*kd+o[2]];
+        const e=focusF*focusF*(3-2*focusF); cp=cp.map((v,i)=>lerp(v,fp[i],e)); tg=tg.map((v,i)=>lerp(v,[tmp.x-.45*(1-portrait),tmp.y-portrait*.35,tmp.z][i],e)); }
+    }
+    camera.position.set(cp[0],cp[1],cp[2]); up.set(0,1-upz,-upz).normalize(); camera.up.copy(up); camera.lookAt(tgt.set(tg[0],tg[1],tg[2]));
+    camera.fov=32; camera.updateProjectionMatrix();
+    U.uPar.value.set(mxS*.6+Math.sin(T*.3)*.2,myS*.6);
+  }
+
+  if(fx.visible){
+    // tunnel in (blue), tunnel out (warm, reversed)
+    const tin=1-smooth(.31,.37,P), tout=smooth(.745,.79,P);
+    F.uTun.value=Math.max(tin,tout); F.uWarm.value=P>.5?1-smooth(.80,.84,P)*.0-smooth(.79,.835,P):smooth(.27,.33,P);
+    F.uTravel.value=P<.5?(P-.2)*9+T*.05:-(P-.74)*9-T*.05; F.uGlow.value=P<.5?smooth(.26,.33,P):1-smooth(.75,.80,P);
+    // worlds
+    F.uWorld.value=smooth(.30,.31,P)*(1-smooth(.77,.79,P)); F.uOpen.value=P<.5?smooth(.305,.375,P):1;
+    const w=kf(P,[[.455,0],[.505,1],[.60,1],[.635,2]]); const base=setWorld(w);
+    const dive=win(P,.565,.61,.625,.665);
+    F.uPitch.value=base.pitch-dive*1.15+myS*-.03; F.uAlt.value=lerp(base.alt,1.2,dive); F.uMirror.value=dive;
+    F.uFly.value=P*120+T*.6; F.uRibbon.value=win(P,.44,.48,.485,.525); F.uDis.value=smooth(.705,.775,P);
+  }
+  bloom.strength=.34+ (fx.visible?.12:0);
+
+  /* DOM */
+  if(!RM){
+    setScene(S.hero,1-smooth(.045,.095,P),-smooth(0,.095,P)*40);
+    setScene(S.mirror,win(P,.165,.195,.255,.295));
+    setScene(S.capri,win(P,.37,.395,.43,.455),(1-smooth(.37,.395,P))*24);
+    setScene(S.hawaii,win(P,.515,.535,.56,.585),(1-smooth(.515,.535,P))*24);
+    setScene(S.hamptons,win(P,.65,.67,.695,.72),(1-smooth(.65,.67,P))*24);
+    const ko=smooth(.885,.92,P)*(1-smooth(.15,.6,past)); setScene(S.k11,ko,(1-smooth(.885,.92,P))*20);
+    const show=ko>.8;
+    for(const h of HOT){ if(show){ tmp.copy(h.v).applyMatrix4(rig.matrixWorld).project(camera); const ok=tmp.z<1; h.el.classList.toggle('vis',ok); if(ok) h.el.style.transform=`translate3d(${((tmp.x*.5+.5)*Wd).toFixed(1)}px,${((-tmp.y*.5+.5)*Hh).toFixed(1)}px,0)`; } else h.el.classList.remove('vis'); }
+  }
+}
+resize(); readScroll();
+function still(){ pS=p=.93; update(0,0); composer.render(); root.classList.add('ready','still'); }
+if(RM){ still(); return; }
+root.classList.add('live'); readScroll(); pS=p;
+let last=performance.now(), first=true;
+function frame(now){ requestAnimationFrame(frame); if(document.hidden){ last=now; return; }
+  const dt=Math.min(.05,(now-last)/1000); last=now; update(now/1000,dt); composer.render();
+  if(first){ first=false; root.classList.add('ready'); } }
+requestAnimationFrame(frame);
+window.__s={ get p(){return pS;} };
+}
+</script>
+</body>
+</html>

@@ -5,5 +5,12 @@
     "url": "/tengir/",
     "image": "/img/tengir.jpg",
     "tag": "Hönnunartillaga"
+  },
+  {
+    "title": "Sælan",
+    "description": "Ferðalag í gegnum ljós. Hugmynd að nýrri forsíðu fyrir sólbaðsstofuna Sæluna.",
+    "url": "/saelan/",
+    "image": "/img/saelan.jpg",
+    "tag": "Hönnunartillaga"
   }
 ]
