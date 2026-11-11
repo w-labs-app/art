@@ -56,7 +56,9 @@ html.past .top,html:not(.live) .top{background:rgba(6,6,8,.9)}
 
 main{position:relative;z-index:3}
 .scene{position:relative;min-height:100svh;display:grid;padding:7rem var(--pad) 4rem}
-html.live .stage{height:1000vh}
+html.live .stage-a{height:260vh}
+html.live .stage-b{height:850vh}
+.bridge{text-align:left;padding-bottom:clamp(4rem,9vh,7rem)}
 html.live .scene{position:fixed;inset:0;min-height:0;opacity:0;visibility:hidden;pointer-events:none;will-change:opacity,transform}
 html.live .scene.on{visibility:visible}
 html.live .scene.hit{pointer-events:auto}
@@ -138,50 +140,37 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink);text-decoration:un
 <header class="top">
   <a class="mark" href="#" aria-label="Sælan, forsíða">Sælan<i></i></a>
   <nav aria-label="Aðalvalmynd">
-    <a class="link" href="#k11">K11 Air Loft</a>
-    <a class="link" href="#stofan">Stofan</a>
     <a class="link" href="#verd">Verð</a>
+    <a class="link" href="#stofan">Stofan</a>
+    <a class="link" href="#k11">K11 Air Loft</a>
     <a class="btn primary small" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka tíma</a>
   </nav>
 </header>
 
 <main>
-  <div class="stage">
+  <div class="stage stage-a">
     <section class="scene s-hero" data-scene="hero">
       <h1 class="display"><span><b>Sælan.</b></span><span>Sólin er nær en þú heldur.</span></h1>
       <p class="sub">Upplifðu nýja vídd ljóss og þæginda.</p>
       <div class="cta">
         <a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka tíma</a>
-        <a class="btn ghost" href="#k11">Upplifðu K11</a>
+        <a class="btn ghost" href="#ferdalag">Upplifðu K11</a>
       </div>
       <div class="hint" aria-hidden="true">Skrunaðu niður<i></i></div>
     </section>
 
-    <section class="scene s-mid" data-scene="mirror">
-      <h2 class="display">Inn í <b>nýja vídd.</b></h2>
-    </section>
-
-    <section class="scene s-world" data-scene="capri">
-      <h2 class="display">Capri.</h2>
-      <p class="when">Morgunbirtan</p>
-      <p class="fine">Áfangastaðirnir eru myndræn túlkun, innblásin af stillingum K11 Air Loft.</p>
-    </section>
-    <section class="scene s-world" data-scene="hawaii">
-      <h2 class="display">Hawaii.</h2>
-      <p class="when">Birtan</p>
-    </section>
-    <section class="scene s-world" data-scene="hamptons">
-      <h2 class="display">Hamptons.</h2>
-      <p class="when">Sólsetrið</p>
-    </section>
-
-    <section class="scene s-k11" data-scene="k11" id="k11">
-      <h2 class="display"><span><b>K11 Air Loft.</b></span><span>Hönnun á nýju stigi.</span></h2>
-      <p class="detail" id="detail" aria-live="polite"><strong>KBL megaSun K11 Air Loft ALL LED</strong><span>Veldu punkt á bekknum til að skoða nánar.</span></p>
-      <div class="cta"><a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka K11 Air Loft</a></div>
-    </section>
   </div>
 
+  <section class="block book" id="verd">
+    <h2 class="display">Þín stund. <b>Þitt val.</b></h2>
+    <ul class="sessions">
+      <li><span class="min">8<small>mín</small></span><span class="what">Hálfur tími, K11 Air Loft FULL LED</span><span class="kr">2.690 kr.</span></li>
+      <li><span class="min">12<small>mín</small></span><span class="what">Stakur tími, K11 Air Loft FULL LED</span><span class="kr">2.990 kr.</span></li>
+      <li><span class="min">16<small>mín</small></span><span class="what">Einn og hálfur tími, K11 Air Loft FULL LED</span><span class="kr">3.890 kr.</span></li>
+    </ul>
+    <p class="note">10% afsláttur fyrir öryrkja. Verð á öðrum bekkjum, morgunverð og kort eru á <a href="https://saelan.is/" rel="noopener">saelan.is</a>.</p>
+    <div class="cta"><a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka tíma</a></div>
+  </section>
   <section class="block" id="stofan">
     <h2 class="display">Það er alltaf <b>sól og sæla</b> hjá okkur.</h2>
     <p class="lead">Sólbaðsstofan Sælan hefur starfað í yfir 20 ár. Fyrsta stofan opnaði í Bæjarlind 1 árið 2002, önnur í Egilshöll árið 2015, og 1. október 2025 opnuðum við aftur. Í dag erum við í Faxafeni 10 í Skeifunni.</p>
@@ -208,16 +197,36 @@ footer a{text-decoration:none}footer a:hover{color:var(--ink);text-decoration:un
     </div>
   </section>
 
-  <section class="block book" id="verd">
-    <h2 class="display">Þín stund. <b>Þitt val.</b></h2>
-    <ul class="sessions">
-      <li><span class="min">8<small>mín</small></span><span class="what">Hálfur tími, K11 Air Loft FULL LED</span><span class="kr">2.690 kr.</span></li>
-      <li><span class="min">12<small>mín</small></span><span class="what">Stakur tími, K11 Air Loft FULL LED</span><span class="kr">2.990 kr.</span></li>
-      <li><span class="min">16<small>mín</small></span><span class="what">Einn og hálfur tími, K11 Air Loft FULL LED</span><span class="kr">3.890 kr.</span></li>
-    </ul>
-    <p class="note">10% afsláttur fyrir öryrkja. Verð á öðrum bekkjum, morgunverð og kort eru á <a href="https://saelan.is/" rel="noopener">saelan.is</a>.</p>
-    <div class="cta"><a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka tíma</a></div>
+  <section class="block bridge">
+    <h2 class="display">Viltu sjá <b>meira?</b></h2>
+    <p class="lead">Haltu áfram niður og farðu inn í Infinity spegilinn á K11 Air Loft.</p>
   </section>
+
+  <div class="stage stage-b" id="ferdalag">
+    <section class="scene s-mid" data-scene="mirror">
+      <h2 class="display">Inn í <b>nýja vídd.</b></h2>
+    </section>
+
+    <section class="scene s-world" data-scene="capri">
+      <h2 class="display">Capri.</h2>
+      <p class="when">Morgunbirtan</p>
+      <p class="fine">Áfangastaðirnir eru myndræn túlkun, innblásin af stillingum K11 Air Loft.</p>
+    </section>
+    <section class="scene s-world" data-scene="hawaii">
+      <h2 class="display">Hawaii.</h2>
+      <p class="when">Birtan</p>
+    </section>
+    <section class="scene s-world" data-scene="hamptons">
+      <h2 class="display">Hamptons.</h2>
+      <p class="when">Sólsetrið</p>
+    </section>
+
+    <section class="scene s-k11" data-scene="k11" id="k11">
+      <h2 class="display"><span><b>K11 Air Loft.</b></span><span>Hönnun á nýju stigi.</span></h2>
+      <p class="detail" id="detail" aria-live="polite"><strong>KBL megaSun K11 Air Loft ALL LED</strong><span>Veldu punkt á bekknum til að skoða nánar.</span></p>
+      <div class="cta"><a class="btn primary" href="https://noona.is/saelansolbadsstofa" rel="noopener">Bóka K11 Air Loft</a></div>
+    </section>
+  </div>
 </main>
 
 <footer>
@@ -461,15 +470,24 @@ function resize(){ Wd=innerWidth; Hh=innerHeight; aspect=Wd/Hh; renderer.setSize
   if(LITE) bloom.resolution.set(Wd*.5,Hh*.5); F.uRes.value.set(Wd,Hh);
   camera.aspect=aspect; kd=clamp(1.35/aspect,1,2.1); portrait=smooth(1.2,.65,aspect); if(RM) requestAnimationFrame(still); }
 addEventListener('resize',resize);
-const stage=document.querySelector('.stage'); const S={}; document.querySelectorAll('.scene').forEach(el=>S[el.dataset.scene]=el);
+const stageA=document.querySelector('.stage-a'), stageB=document.querySelector('.stage-b'), blocks=[...document.querySelectorAll('.block')]; const SPLIT=.15; let covered=false; const S={}; document.querySelectorAll('.scene').forEach(el=>S[el.dataset.scene]=el);
 function setScene(el,o,dy){ if(el._o===o) return; el._o=o; el.style.opacity=o.toFixed(3); el.classList.toggle('on',o>.002); el.classList.toggle('hit',o>.6); el.style.transform=dy?`translate3d(0,${dy.toFixed(1)}px,0)`:''; }
 let p=0,pS=0,mx=0,my=0,mxS=0,myS=0,past=0;
 const FORCE=new URLSearchParams(location.search).get('p'); // ?p=0.4 pins the journey for review
-function readScroll(){ const total=stage.offsetHeight-innerHeight; if(FORCE!==null){ p=+FORCE; return; } p=clamp(scrollY/Math.max(1,total)); past=clamp((scrollY-total)/innerHeight); root.classList.toggle('past',past>.03); }
+function readScroll(){ if(FORCE!==null){ p=+FORCE; return; }
+  const vh=innerHeight, y=scrollY, endA=stageA.offsetTop+stageA.offsetHeight, offB=stageB.offsetTop, totB=stageB.offsetHeight-vh;
+  if(y<offB-vh*.5){ p=SPLIT*clamp((y-stageA.offsetTop)/Math.max(1,stageA.offsetHeight-vh)); past=0; }
+  else { p=SPLIT+(1-SPLIT)*clamp((y-offB)/Math.max(1,totB)); past=clamp((y-offB-totB)/vh); }
+  covered = y>endA && y+vh<offB;
+  let solid=false; for(const b of blocks){ const r=b.getBoundingClientRect(); if(r.top<64&&r.bottom>64){ solid=true; break; } }
+  root.classList.toggle('past',solid); }
 addEventListener('scroll',readScroll,{passive:true});
 addEventListener('pointermove',e=>{ if(e.pointerType==='touch') return; mx=e.clientX/Wd*2-1; my=e.clientY/Hh*2-1; },{passive:true});
-document.querySelectorAll('a[href="#k11"]').forEach(a=>a.addEventListener('click',e=>{ if(!root.classList.contains('live')) return; e.preventDefault(); scrollTo({top:.93*(stage.offsetHeight-innerHeight),behavior:'smooth'}); }));
+const jump=(sel,P)=>document.querySelectorAll(sel).forEach(a=>a.addEventListener('click',e=>{ if(!root.classList.contains('live')) return; e.preventDefault();
+  scrollTo({top:stageB.offsetTop+(P-SPLIT)/(1-SPLIT)*(stageB.offsetHeight-innerHeight),behavior:'smooth'}); }));
+jump('a[href="#k11"]',.93); jump('a[href="#ferdalag"]',SPLIT+.005);
 
+let wake0=null;
 const tmp=new THREE.Vector3(), tgt=new THREE.Vector3(), cpos=new THREE.Vector3(), up=new THREE.Vector3();
 function update(t,dt){
   pS+=(p-pS)*(RM?1:1-Math.exp(-dt*5)); mxS+=(mx-mxS)*(1-Math.exp(-dt*3)); myS+=(my-myS)*(1-Math.exp(-dt*3));
@@ -483,16 +501,17 @@ function update(t,dt){
 
   if(machine){
     const back=P>.5;
-    const on=back?1:smooth(.015,.09,P);
-    U.uOn.value=on; beamU.uA.value=(back?.75*smooth(.855,.9,P):smooth(0,.05,P)*(1-smooth(.08,.15,P)))*(1-fxA);
-    spot.intensity=(back?60:smooth(.01,.08,P)*60); blueL.intensity=on*2.4; keyL.intensity=on*1.5;
-    const rot=back ? -.5+Math.sin(T*.18)*.22*(1-focusF) : kf(P,[[0,-1.5],[.09,-.52],[.17,-.2],[.21,0]]);
+    if(wake0===null) wake0=t; const wake=RM?1:smooth(.2,2.6,t-wake0); // the machine wakes on arrival, not on scroll
+    const on=back?1:Math.max(wake,smooth(.008,.05,P));
+    U.uOn.value=on; beamU.uA.value=(back?.75*smooth(.855,.9,P):Math.max(smooth(0,1.2,t-wake0),smooth(0,.03,P))*(1-smooth(.05,.11,P)))*(1-fxA);
+    spot.intensity=(back?60:Math.max(wake,smooth(.005,.04,P))*60); blueL.intensity=on*2.4; keyL.intensity=on*1.5;
+    const rot=back ? -.5+Math.sin(T*.18)*.22*(1-focusF) : kf(P,[[0,-1.0],[.06,-.55],[.15,-.05],[.21,0]]);
     rig.rotation.y=rot+mxS*.12*(1-fxA); mirrorRig.rotation.y=rig.rotation.y;
     let cp,tg,upz=0;
     if(!back){
-      cp=kf(P,[[0,[0,1.35,8.8*kd]],[.10,[.5,1.25,6.6*kd]],[.165,[.2,1.5,2.5]],[.2,[0,1.84,.95]],[.235,[0,1.93,.02]]]);
-      tg=kf(P,[[0,[-1.5*(1-portrait),.95-portrait*.5,0]],[.10,[0,1.15,0]],[.165,[0,1.85,0]],[.2,[0,2.04,.1]],[.235,[0,2.05,0]]]);
-      upz=smooth(.17,.215,P);
+      const k2=Math.min(kd,1.5); cp=kf(P,[[0,[0,1.35,8.8*kd]],[.06,[-1.4,1.5,5.4*kd]],[.15,[1.5,1.32,3.3*k2]],[.185,[.2,1.5,2.5]],[.2,[0,1.84,.95]],[.235,[0,1.93,.02]]]);
+      tg=kf(P,[[0,[-1.5*(1-portrait),.95-portrait*.5,0]],[.06,[-.5*(1-portrait),1.15,0]],[.15,[.15,1.12,0]],[.185,[0,1.85,0]],[.2,[0,2.04,.1]],[.235,[0,2.05,0]]]);
+      upz=smooth(.185,.215,P);
     } else {
       const wide=1-portrait;
       cp=kf(P,[[.80,[0,1.93,.02]],[.845,[0,1.7,1.6]],[.9,[-.5,1.45,7.4*kd]]]);
@@ -525,8 +544,8 @@ function update(t,dt){
 
   /* DOM */
   if(!RM){
-    setScene(S.hero,1-smooth(.045,.095,P),-smooth(0,.095,P)*40);
-    setScene(S.mirror,win(P,.165,.195,.255,.295));
+    setScene(S.hero,1-smooth(.03,.07,P),-smooth(0,.07,P)*40);
+    setScene(S.mirror,win(P,.18,.2,.255,.295));
     setScene(S.capri,win(P,.37,.395,.43,.455),(1-smooth(.37,.395,P))*24);
     setScene(S.hawaii,win(P,.515,.535,.56,.585),(1-smooth(.515,.535,P))*24);
     setScene(S.hamptons,win(P,.65,.67,.695,.72),(1-smooth(.65,.67,P))*24);
@@ -541,7 +560,7 @@ if(RM){ still(); return; }
 root.classList.add('live'); readScroll(); pS=p;
 let last=performance.now(), first=true;
 function frame(now){ requestAnimationFrame(frame); if(document.hidden){ last=now; return; }
-  const dt=Math.min(.05,(now-last)/1000); last=now; update(now/1000,dt); composer.render();
+  const dt=Math.min(.05,(now-last)/1000); last=now; update(now/1000,dt); if(!covered) composer.render();
   if(first){ first=false; root.classList.add('ready'); } }
 requestAnimationFrame(frame);
 window.__s={ get p(){return pS;} };
