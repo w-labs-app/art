@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#05070B">
+<title>wilsonart</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2305070B'/%3E%3Crect x='3' y='3' width='10' height='10' fill='none' stroke='%2300DFFF' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05070B;--white:#F5F8FF;--silver:#AAB5C5;--cyan:#00DFFF;--line:rgba(170,181,197,.22);--pad:clamp(1.25rem,4.5vw,4.5rem);--ease:cubic-bezier(.16,1,.3,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);color-scheme:dark}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--white);font-family:"Archivo",system-ui,sans-serif;font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--cyan);color:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+header,main,footer{padding-inline:var(--pad)}
+header{padding-block:1.5rem}
+.brand{font-weight:800;font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem}
+main{flex:1;padding-block:clamp(2.5rem,8vw,6rem)}
+h1{max-width:20ch;margin:0 0 clamp(2.5rem,6vw,4.5rem);font-size:clamp(2rem,5.5vw,4.25rem);line-height:1.04;font-weight:700;font-stretch:112%;letter-spacing:-.02em;text-wrap:balance}
+.ideas{list-style:none;margin:0;padding:0;display:grid;gap:clamp(1rem,2.5vw,1.75rem);grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr))}
+.idea a{display:block;height:100%;text-decoration:none;border:1px solid var(--line);transition:border-color .3s var(--ease),transform .5s var(--ease)}
+.idea a:hover{border-color:var(--cyan)}
+.thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0B1425}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.idea a:hover img{transform:scale(1.035)}
+.tag{position:absolute;left:.75rem;top:.75rem;padding:.25rem .6rem;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--bg);background:var(--cyan)}
+.body{padding:1.25rem 1.25rem 1.5rem}
+.body h2{margin:0 0 .35rem;font-size:1.5rem;font-weight:700;letter-spacing:-.01em}
+.body p{margin:0;color:var(--silver)}
+.open{display:inline-block;margin-top:1rem;font-weight:600;color:var(--cyan)}
+.open::after{content:" →";transition:margin .3s var(--ease)}
+.idea a:hover .open::after{margin-left:.35rem}
+/* Ein hugmynd: breiðari, lárétt færsla */
+@media (min-width:60rem){
+  .ideas:has(> .idea:only-child){grid-template-columns:minmax(0,1fr)}
+  .idea:only-child a{display:grid;grid-template-columns:1.4fr 1fr;align-items:stretch}
+  .idea:only-child .thumb{aspect-ratio:auto;min-height:22rem}
+  .idea:only-child .body{align-self:end;padding:2rem}
+  .idea:only-child .body h2{font-size:2.25rem}
+}
+footer{padding-block:2rem;border-top:1px solid var(--line);color:var(--silver);font-size:.875rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer a{text-underline-offset:.22em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="brand">wilsonart</div></header>
+<main>
+  <h1>Hér eru demo af útliti sem við getum gert</h1>
+  <ul class="ideas" id="ideas"></ul>
+  <noscript><p>Kveiktu á JavaScript til að sjá hugmyndirnar.</p></noscript>
+</main>
+<footer>
+  <span>Allar hugmyndir hér eru hönnunartillögur, ekki opinberir vefir.</span>
+  <a href="/logout">Skrá út</a>
+</footer>
+<script>
+// Hugmyndirnar koma úr ideas.json. Texti er settur með textContent (engin HTML-innspýting).
+fetch("/ideas.json").then(r => r.json()).then(list => {
+  const ul = document.getElementById("ideas");
+  for (const i of list) {
+    const li = document.createElement("li"); li.className = "idea";
+    const a = document.createElement("a"); a.href = i.url;
+    const t = document.createElement("div"); t.className = "thumb";
+    const img = document.createElement("img"); img.src = i.image; img.alt = ""; img.loading = "lazy";
+    const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = i.tag || "Hönnunartillaga";
+    t.append(img, tag);
+    const b = document.createElement("div"); b.className = "body";
+    const h = document.createElement("h2"); h.textContent = i.title;
+    const p = document.createElement("p"); p.textContent = i.description;
+    const o = document.createElement("span"); o.className = "open"; o.textContent = "Opna";
+    b.append(h, p, o); a.append(t, b); li.append(a); ul.append(li);
+  }
+});
+</script>
+</body>
+</html>
